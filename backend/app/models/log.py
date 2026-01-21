@@ -2,7 +2,6 @@ from sqlmodel import SQLModel, Field, Relationship, text, Column, DateTime
 from typing import Optional
 from datetime import datetime
 
-
 class AttendanceLog(SQLModel, table=True):
     __tablename__ = 'attendance_logs'
     id: Optional[int] = Field(default=None, primary_key=True)

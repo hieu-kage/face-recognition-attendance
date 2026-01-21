@@ -1,9 +1,7 @@
-# app/core/db.py
 
 from sqlmodel import create_engine, Session, SQLModel
 from app.core.config import DATABASE_URL
 from typing import Generator
-
 
 engine = create_engine(DATABASE_URL, echo=True)
 
@@ -16,9 +14,7 @@ def create_db_and_tables():
     from app.models.face_embedding import FaceEmbedding
     from app.models.log import AttendanceLog
 
-
     SQLModel.metadata.create_all(engine)
-
 
 def get_session():
     with Session(engine) as session:

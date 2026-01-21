@@ -1,4 +1,3 @@
-# app/schemas/lecturer.py
 from pydantic import BaseModel
 
 class LecturerCreate(BaseModel):

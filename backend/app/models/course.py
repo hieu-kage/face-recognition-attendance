@@ -2,7 +2,6 @@ from sqlmodel import SQLModel, Field, Relationship
 from typing import Optional, List
 from datetime import datetime
 
-
 class Course(SQLModel, table=True):
     __tablename__ = 'courses'
     id: Optional[int] = Field(default=None, primary_key=True)
@@ -17,6 +16,5 @@ class Course(SQLModel, table=True):
     number_of_sessions: Optional[int] = None
     template_room: Optional[str] = None
 
-    # Relationships
     schedules: List["Schedule"] = Relationship(back_populates="course")
     enrollments: List["Enrollment"] = Relationship(back_populates="course")

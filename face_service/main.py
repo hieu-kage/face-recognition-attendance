@@ -34,7 +34,6 @@ class EmbeddingResponse(BaseModel):
 async def startup():
     load_model_once()
 
-# --- Helpers ---
 def base64_to_image(base64_str: str) -> np.ndarray:
     try:
         if ',' in base64_str:
@@ -71,4 +70,3 @@ async def extract_embedding_api(request: ImageBase64Request):
 
     except Exception as e:
         raise HTTPException(status_code=500, detail=str(e))
-

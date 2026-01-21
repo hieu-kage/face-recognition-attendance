@@ -58,7 +58,7 @@ async def search_enrollments(
 async def add_student_to_course(
     *,
     course_id: int,
-    student: ProfileCreate,    # name, student_code
+    student: ProfileCreate,
     db: Session = Depends(get_session),
 ):
     try:

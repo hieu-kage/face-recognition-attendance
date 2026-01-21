@@ -1,4 +1,3 @@
-# api/logs.py
 
 from fastapi import APIRouter, HTTPException
 from app.core.config import supabase_client

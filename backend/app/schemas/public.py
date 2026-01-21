@@ -9,7 +9,6 @@ class SearchRequest(BaseModel):
     course_id: int
     image_base64: str
 
-
 class EnrollResponse(BaseModel):
     success: bool = True
     data: ProfilePublic

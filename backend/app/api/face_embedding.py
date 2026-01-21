@@ -25,7 +25,6 @@ router = APIRouter(
     tags=["Face_Embedding"]
 )
 
-
 async def get_embedding_from_api(image_base64: str) -> list:
 
     try:
@@ -70,7 +69,6 @@ async def get_embedding_from_api(image_base64: str) -> list:
             detail=f"Unexpected error calling embedding API: {str(e)}"
         )
 
-
 @router.post("/enroll", response_model=EnrollResponse)
 async def enroll_face(
         request: EnrollRequest,
@@ -111,7 +109,6 @@ async def enroll_face(
                               """)
             session.execute(insert_sql, {"pid": profile.id, "vec": vector_str})
 
-
         session.commit()
         session.refresh(profile)
 
@@ -127,7 +124,6 @@ async def search_face(
     request: SearchRequest,
     session: Session = Depends(get_session)
 ):
-
 
     vector = await get_embedding_from_api(request.image_base64)
     vector_str = str(list(vector))
@@ -227,7 +223,6 @@ async def health_check():
     """
     embedding_status = "unknown"
     try:
-        # Gọi thử health check của service AI
         async with httpx.AsyncClient(timeout=3.0) as client:
             response = await client.get(AI_HEALTH_ENDPOINT)
             if response.status_code == 200:

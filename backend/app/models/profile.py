@@ -9,12 +9,10 @@ class Profile(SQLModel, table=True):
     name: str = Field(index=True)
     role: str = Field(default='student')
 
-    # Relationships
     lecturer: Optional["Lecturer"] = Relationship(back_populates="profile")
     face_embedding: Optional["FaceEmbedding"] = Relationship(back_populates="profile")
     enrollments: List["Enrollment"] = Relationship(back_populates="profile")
     attendance_logs: List["AttendanceLog"] = Relationship(back_populates="profile")
-
 
 class Lecturer(SQLModel, table=True):
     __tablename__ = 'lecturers'

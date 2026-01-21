@@ -1,17 +1,14 @@
-# app/crud/lecturers.py
 from fastapi import HTTPException
 from sqlmodel import Session, select
 from sqlalchemy.exc import IntegrityError
 from app.models.profile import Profile,Lecturer
 from app.schemas.lecturer import LecturerCreate
 
-
 def create_lecturer(db: Session, lecturer: LecturerCreate):
     """
     Tạo giảng viên: Tạo 1 Profile VÀ 1 Lecturer liên kết
     """
     try:
-        # 1. Tạo Profile
         new_profile = Profile(
             name=lecturer.name,
             email=lecturer.email,
@@ -28,13 +25,12 @@ def create_lecturer(db: Session, lecturer: LecturerCreate):
 
         return {"id": new_lecturer.id, "name": new_profile.name}
 
-    except IntegrityError:  # Bắt lỗi email/sdt trùng
+    except IntegrityError:
         db.rollback()
         raise HTTPException(status_code=409, detail="Email đã tồn tại")
     except Exception as e:
         db.rollback()
         raise HTTPException(status_code=500, detail=str(e))
-
 
 def get_all_lecturers(db: Session):
     """
@@ -45,5 +41,4 @@ def get_all_lecturers(db: Session):
     )
     results = db.exec(statement).all()
 
-    # Chuyển đổi [Row(id=1, name='A')] thành [{id: 1, name: 'A'}]
     return [{"id": row.id, "name": row.name} for row in results]

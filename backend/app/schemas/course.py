@@ -5,8 +5,6 @@ from typing import List, Optional
 class ConfigBase:
     from_attributes = True
 
-
-
 class CourseBase(BaseModel):
     id: int
     name: str
@@ -21,7 +19,6 @@ class CourseCreateRequest(BaseModel):
     template_end_time: datetime
     number_of_sessions: int
     template_room: Optional[str] = None
-
 
 class ScheduleSimple(BaseModel):
     id: int

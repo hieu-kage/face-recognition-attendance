@@ -1,5 +1,4 @@
 
-
 import os
 from typing import Optional, List
 from datetime import datetime
@@ -28,7 +27,6 @@ MODEL_PATH = "siamese_mobilenetv2_best.pth"
 TEMP_SAVE_DIR = "tmp_images"
 os.makedirs(TEMP_SAVE_DIR, exist_ok=True)
 
-
 class EmbeddingNet(nn.Module):
     def __init__(self, embedding_dim=EMBEDDING_DIM):
         super().__init__()
@@ -47,12 +45,10 @@ class EmbeddingNet(nn.Module):
         x = F.normalize(x, p=2, dim=1)
         return x
 
-
 class SiameseNet(nn.Module):
     def __init__(self, embedding_dim=EMBEDDING_DIM):
         super().__init__()
         self.embedding = EmbeddingNet(embedding_dim)
-
 
 def load_model_once():
 
@@ -85,14 +81,12 @@ def load_model_once():
 
     print("AI Models ready.")
 
-
 import tempfile
 
 def save_image_temp(img: np.ndarray) -> str:
     try:
-        # Sử dụng tempfile để tạo file tạm an toàn, tự động xử lý đường dẫn OS
         fd, file_path = tempfile.mkstemp(suffix=".jpg")
-        os.close(fd) # Đóng file descriptor ngay lập tức để cv2 có thể mở
+        os.close(fd)
         
         cv2.imwrite(file_path, img)
         return file_path
@@ -100,22 +94,18 @@ def save_image_temp(img: np.ndarray) -> str:
         print(f"Error saving temp image: {e}")
         return ""
 
-
 def detect_face(image: np.ndarray) -> Optional[np.ndarray]:
 
     if _mtcnn is None:
         load_model_once()
 
-    # MTCNN cần input là PIL Image (RGB)
     img_rgb = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
     img_pil = Image.fromarray(img_rgb)
 
-    # (C, H, W)
     face_tensor = _mtcnn(img_pil)
 
     if face_tensor is None:
         return None
-
 
     face_np = face_tensor.permute(1, 2, 0).cpu().numpy()
 
@@ -127,11 +117,9 @@ def detect_face(image: np.ndarray) -> Optional[np.ndarray]:
 
     return face_bgr
 
-
 def image_to_embedding(image: np.ndarray) -> Optional[List[float]]:
 
     try:
-        # Lấy ra face crop
         face = detect_face(image)
         if face is None:
             return None

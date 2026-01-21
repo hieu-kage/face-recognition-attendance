@@ -1,4 +1,3 @@
-# app/crud/schedules.py
 
 from fastapi import HTTPException
 from sqlmodel import Session, select
@@ -8,7 +7,6 @@ from app.models.schedule import Schedule
 from app.models.log import AttendanceLog
 from app.models.course import Course
 from app.models.enrollment import Enrollment
-
 
 def get_session_data(db: Session, schedule_id: int):
 

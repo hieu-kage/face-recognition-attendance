@@ -3,7 +3,6 @@ from pydantic import BaseModel
 from datetime import datetime
 from typing import List, Optional
 
-
 class ConfigBase:
     from_attributes = True
 class ProfileSimple(BaseModel):
@@ -12,7 +11,6 @@ class ProfileSimple(BaseModel):
 
     class Config(ConfigBase):
         pass
-
 
 class ScheduleSimple(BaseModel):
     id: int
@@ -23,7 +21,6 @@ class ScheduleSimple(BaseModel):
     class Config(ConfigBase):
         pass
 
-
 class CourseBase(BaseModel):
     id: int
     name: str
@@ -32,12 +29,8 @@ class CourseBase(BaseModel):
     class Config(ConfigBase):
         pass
 
-
-# --- Model cho Response (Output) ---
-
 class CourseDetailResponse(CourseBase):
     schedules: List[ScheduleSimple] = []
-
 
 class AttendanceLogEntry(BaseModel):
     check_in_time: datetime
@@ -47,8 +40,6 @@ class AttendanceLogEntry(BaseModel):
     class Config(ConfigBase):
         pass
 
-
-# Model quan trọng cho trang Chi tiết Buổi học
 class SessionDetailResponse(BaseModel):
     schedule: ScheduleSimple
     attendees: List[AttendanceLogEntry] = []

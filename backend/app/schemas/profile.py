@@ -1,7 +1,6 @@
 from typing import List, Optional
 from pydantic import BaseModel
 
-
 class ProfilePublic(BaseModel):
     id: int
     student_id: str | None

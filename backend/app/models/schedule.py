@@ -12,5 +12,4 @@ class Schedule(SQLModel, table=True):
     course_id: int = Field(foreign_key="courses.id")
     course: "Course" = Relationship(back_populates="schedules")
 
-    # Relationships
     attendance_logs: List["AttendanceLog"] = Relationship(back_populates="schedule")

@@ -1,4 +1,3 @@
-# app/crud/courses.py
 
 from fastapi import HTTPException
 from sqlmodel import Session, select
@@ -38,7 +37,6 @@ def create_course(db: Session, course: CourseCreateRequest):
         db.rollback()
         raise HTTPException(status_code=500, detail=f"Lỗi khi tạo khóa học: {str(e)}")
 
-
 def get_all_courses(db: Session):
     courses = db.exec(
         select(Course)
@@ -48,7 +46,6 @@ def get_all_courses(db: Session):
         )
     ).all()
 
-    # map thủ công
     result = []
     for c in courses:
         course_dict = {
