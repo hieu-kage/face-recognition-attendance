@@ -1,0 +1,40 @@
+
+**/.env
+**/.env.local
+
+# ==================================
+# Thư mục thư viện (Dependencies)
+# ==================================
+**/node_modules
+**/.venv
+
+# ==================================
+# Thư mục IDE (Theo yêu cầu của bạn)
+# ==================================
+**/.idea/
+**/.vscode/
+
+# ==================================
+# Cache & Logs của Python
+# ==================================
+**/__pycache__
+*.pyc
+
+# ==================================
+# Thư mục Build & Rác của OS
+# ==================================
+**/build/
+**/dist/
+.DS_Store
+Thumbs.db
+*.log
+
+# ==================================
+# Temporary & Scratch Files
+# ==================================
+tmp_images/
+benchmark_latency.py
+inspect_model.py
+*.tmp
+*.bak
+*.swp

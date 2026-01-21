@@ -1,0 +1,303 @@
+/* CreateCoursePage.css - Professional Blue Theme with Form Styling */
+@import url('../theme.css');
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-dashboard {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  background: linear-gradient(135deg, var(--color-bg-gradient-start) 0%, var(--color-bg-gradient-end) 100%);
+  min-height: 100vh;
+  animation: fadeIn 0.6s var(--transition);
+}
+
+/* ===================== BUTTONS ===================== */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: white;
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  text-decoration: none;
+  margin-bottom: 24px;
+  font-size: 14px;
+  padding: 10px 20px;
+  border-radius: var(--radius-md);
+  transition: var(--transition);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.back-link::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.back-link:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.back-link:hover {
+  background: linear-gradient(135deg, #2563eb 0%, var(--color-primary) 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+  text-decoration: none;
+}
+
+/* ===================== MAIN CARD ===================== */
+.admin-card {
+  background: var(--color-bg-primary);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 32px;
+  border: 1px solid var(--color-border);
+  transition: var(--transition);
+  animation: fadeIn 0.6s var(--transition) 0.2s backwards;
+}
+
+.admin-card:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.admin-card h2 {
+  color: var(--color-text-primary);
+  margin: 0 0 30px 0;
+  font-size: 26px;
+  font-weight: 700;
+  text-align: center;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--color-border);
+}
+
+/* ===================== FORM STYLING ===================== */
+form {
+  display: grid;
+  gap: 22px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+label {
+  font-size: 15px;
+  color: var(--color-text-primary);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 4px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 13px 16px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  color: var(--color-text-primary);
+  transition: var(--transition);
+  background-color: var(--color-bg-primary);
+  font-family: inherit;
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: var(--color-primary-light);
+}
+
+input:focus, select:focus, textarea:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  background-color: var(--color-bg-secondary);
+}
+
+input::placeholder, textarea::placeholder {
+  color: var(--color-text-light);
+}
+
+textarea {
+  resize: vertical;
+  min-height: 120px;
+  font-family: inherit;
+}
+
+/* ===================== LECTURER SELECTION ===================== */
+.lecturer-select-group {
+  display: flex;
+  gap: 12px;
+  align-items: stretch;
+  animation: fadeIn 0.6s var(--transition) 0.3s backwards;
+}
+
+.lecturer-select-group select {
+  flex: 1;
+}
+
+.add-lecturer-btn {
+  padding: 0 20px;
+  background: linear-gradient(135deg, var(--color-success) 0%, #34d399 100%);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  transition: var(--transition);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  overflow: hidden;
+}
+
+.add-lecturer-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.add-lecturer-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.add-lecturer-btn:hover {
+  background: linear-gradient(135deg, #059669 0%, #10b981 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* ===================== LECTURER ADD BOX ===================== */
+.add-lecturer-box {
+  margin-top: 20px;
+  padding: 20px;
+  background: linear-gradient(135deg, rgba(59, 130, 246, 0.05) 0%, rgba(6, 182, 212, 0.05) 100%);
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(59, 130, 246, 0.2);
+  animation: fadeIn 0.4s var(--transition);
+}
+
+/* ===================== SUBMIT BUTTON ===================== */
+.submit-btn {
+  background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-light) 100%);
+  color: white;
+  padding: 16px 28px;
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: var(--transition);
+  width: 100%;
+  margin-top: 12px;
+  box-shadow: var(--shadow-md);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  position: relative;
+  overflow: hidden;
+}
+
+.submit-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.submit-btn:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.submit-btn:hover {
+  background: linear-gradient(135deg, #2563eb 0%, var(--color-primary) 100%);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.submit-btn:disabled {
+  background: #cbd5e1;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
+.submit-btn:active {
+  transform: translateY(0);
+}
+
+/* ===================== RESPONSIVE ===================== */
+@media (max-width: 768px) {
+  .admin-dashboard {
+    padding: 20px;
+  }
+
+  .admin-card {
+    padding: 24px;
+  }
+
+  .admin-card h2 {
+    font-size: 22px;
+  }
+
+  .lecturer-select-group {
+    flex-direction: column;
+  }
+
+  .add-lecturer-btn {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-dashboard {
+    padding: 16px;
+  }
+
+  .admin-card {
+    padding: 16px;
+  }
+
+  .admin-card h2 {
+    font-size: 20px;
+  }
+
+  input, select, textarea {
+    font-size: 16px;
+  }
+}
